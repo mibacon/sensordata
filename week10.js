@@ -15,11 +15,11 @@ app.get('/', function (req, res) {
     const client = new Pool(db_credentials);
 
     // SQL query
-    var q = `SELECT EXTRACT(DAY FROM datatime AT TIME ZONE 'America/New_York') as sensorday, 
-             EXTRACT(MONTH FROM datatime AT TIME ZONE 'America/New_York') as sensormonth, 
+    var q = `SELECT EXTRACT(DAY FROM datatime) as sensorday, 
+             EXTRACT(MONTH FROM datatime) as sensormonth, 
              count(*) as num_obs, 
              max(temp) as max_temp, 
-             min(temp) as min_light,
+             min(temp) as min_temp,
              max(fsr) as max_fsr, 
              min(fsr) as min_fsr
              FROM sensordata 
